@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	servers = flag.String("servers", "localhost:8081", "Comma separated list of MQ servers")
+	servers = flag.String("servers", "localhost:9091", "Comma separated list of MQ servers")
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 		client.WithServers(strings.Split(*servers, ",")...),
 	)
 
-	ch, err := c.Subscribe("foo")
+	ch, err := c.Subscribe("tracer")
 	if err != nil {
 		log.Println(err)
 		return
